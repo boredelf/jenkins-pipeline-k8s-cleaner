@@ -16,8 +16,8 @@ for ns in ${namespaces[@]}; do
    expirationDate=$(kubectl get ns ${ns} --template='{{.metadata.labels.expiresAt}}' | tr -d '-')
    if [[ ${expirationDate} -le ${today} ]]; then expiredNamespaces+=(${ns}); fi
 done
-
 echo "found ${#expiredNamespaces[@]} expired namespace(s)."
+
 for ens in ${expiredNamespaces[@]}; do
    deleteSuccessful=$(kubectl delete ns ${ens} 2>&1)
    echo -n "Deleting \"${ens}\"... "
