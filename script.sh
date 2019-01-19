@@ -26,3 +26,6 @@ for ens in ${expiredNamespaces[@]}; do
 		else echo "not deleted. Stderr: ${deleteSuccessful}"
 	fi
 done
+
+# TODO: Delete Docker images (using branch's name, extracted from namespace) from Nexus?
+# The namespace should use '--' to separate its name from branch postfix, as follow: namespace--branch-name
